@@ -1,0 +1,55 @@
+{
+  "scope": "EQ-A",
+  "resources": {
+    "/library/equipment": {
+      "body": {
+        "issue": "2",
+        "modules": [
+          {
+            "id": "DM100",
+            "href": "/library/equipment/records/DM100"
+          }
+        ]
+      }
+    },
+    "/library/equipment/records/DM100": {
+      "body": {
+        "module": "DM100",
+        "issue": "2",
+        "equipment": "EQ-A",
+        "title": "安全检查",
+        "approved": true,
+        "body": "断电后进行外观检查"
+      }
+    },
+    "/library/equipment/relations/DM100": {
+      "body": {
+        "applicability": {
+          "modification": "M"
+        },
+        "references": [
+          {
+            "module": "DM200",
+            "issue": "2",
+            "condition": "M-installed",
+            "kind": "fixed"
+          }
+        ]
+      }
+    }
+  },
+  "portal": {
+    "identity": "module",
+    "records": {
+      "DM100": {
+        "module": "DM100",
+        "issue": "2",
+        "equipment": "EQ-A",
+        "title": "安全检查",
+        "approved": true,
+        "body": "断电后进行外观检查"
+      }
+    },
+    "version": 1
+  }
+}

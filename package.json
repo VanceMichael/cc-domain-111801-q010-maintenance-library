@@ -1,0 +1,16 @@
+{
+  "name": "maintenance-library",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "维修资料门户中设备适用性驱动的补件采集",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test --test-concurrency=1",
+    "demo": "node scripts/demo.mjs",
+    "start": "node scripts/start.mjs"
+  }
+}
