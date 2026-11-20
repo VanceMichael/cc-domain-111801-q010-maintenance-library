@@ -1,6 +1,6 @@
 # MaintenanceLibrary
 
-MaintenanceLibrary 为业务资料员提供适用分支领取与原文保管，已支持来源目录预览、直接记录领取、资料核准、设备类别归属、资料号与版次以及按业务范围形成收件记录。原文与领域收件结论分开保存，便于复查来源内容。
+MaintenanceLibrary 为业务资料员提供适用分支领取与原文保管，已支持来源目录预览、直接记录领取、资料核准、设备类别归属、资料号与版次以及按业务范围形成收件记录。在此基础上，资料领取可依据单台设备的装配记录与门户自己的适用声明，沿引用继续收集前置检查、警示与替代分支，并为每个资料包保留可解释的纳入、排除与缺口结论。原文与领域收件结论分开保存，便于复查来源内容。
 
 ## 环境与运行
 
@@ -26,4 +26,6 @@ docker run --rm --network none maintenance-library:local
 
 ## 代码与来源约定
 
-`src/source.mjs` 负责来源目录与原文身份，`src/interpret.mjs` 解释当前领域记录，`src/receiving.mjs` 决定选定范围内的收件结果。`src/archive.mjs` 提供原文保管及收据落库，`src/app.mjs` 连接日常业务，`fixtures/` 与 `src/fixture-source.mjs` 提供可独立复查的本地合作源。详细字段与来源声明见 `docs/source-contract.md`。
+`src/source.mjs` 负责来源目录与原文身份，`src/interpret.mjs` 解释当前领域记录，`src/receiving.mjs` 决定选定范围内的收件结果。`src/conditions.mjs` 把适用条件解释为满足/不满足/未知三态，未登记的改装按未知处理而不是臆断为未安装；`src/equipment.mjs` 解释设备装配记录与记录补正差异；`src/relations.mjs` 解释关联资料中的固定引用与替代引用；`src/planner.mjs` 依据设备状态沿引用规划资料包并决议替代组；`src/package.mjs` 完成建包与旧包复核（复核只追加、不改写快照）；`src/report.mjs` 输出每个包的设备状态、纳入/排除引用、待批准替代和尚缺条件或原文。`src/archive.mjs` 提供原文保管、收据与资料包落库，`src/app.mjs` 连接日常业务，`fixtures/` 与 `src/fixture-source.mjs` 提供可独立复查的本地合作源。详细字段与来源声明见 `docs/source-contract.md`。
+
+系统不执行维修，也不替技术负责人批准替代资料：可适用的替代只生成待批准建议；条件不满足的分支明确排除且不计缺件，条件未知的分支挂起而不是判定不适用；来源撤下旧版又没有合法替代时保留真实缺口，不套用最新版。通用警示按原文摘要共享保管，一个设备的适用性变化不会改动其他设备的资料包。

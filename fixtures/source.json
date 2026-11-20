@@ -33,7 +33,145 @@
             "issue": "2",
             "condition": "M-installed",
             "kind": "fixed"
+          },
+          {
+            "module": "DM300",
+            "issue": "1",
+            "condition": "unconditional",
+            "kind": "fixed"
+          },
+          {
+            "module": "DM500",
+            "issue": "1",
+            "condition": "N-installed",
+            "kind": "fixed",
+            "group": "G500"
+          },
+          {
+            "module": "DM500",
+            "issue": "2",
+            "condition": "N-absent",
+            "kind": "alternative",
+            "group": "G500"
+          },
+          {
+            "module": "DM600",
+            "issue": "1",
+            "condition": "M-installed",
+            "kind": "fixed"
           }
+        ]
+      }
+    },
+    "/library/equipment/records/DM300": {
+      "body": {
+        "module": "DM300",
+        "issue": "1",
+        "equipment": "EQ-A",
+        "title": "通用设备警示",
+        "approved": true,
+        "body": "作业前确认能源隔离并挂牌"
+      }
+    },
+    "/library/equipment/relations/DM300": {
+      "body": {
+        "references": [
+          {
+            "module": "DM400",
+            "issue": "1",
+            "kind": "fixed"
+          }
+        ]
+      }
+    },
+    "/library/equipment/records/DM200": {
+      "body": {
+        "module": "DM200",
+        "issue": "2",
+        "equipment": "EQ-A",
+        "title": "M 改装前置检查",
+        "approved": true,
+        "body": "确认改装 M 的接线固定与绝缘电阻"
+      }
+    },
+    "/library/equipment/relations/DM200": {
+      "body": {
+        "references": [
+          {
+            "module": "DM250",
+            "issue": "1",
+            "condition": "M-installed",
+            "kind": "fixed"
+          }
+        ]
+      }
+    },
+    "/library/equipment/records/DM250": {
+      "body": {
+        "module": "DM250",
+        "issue": "1",
+        "equipment": "EQ-A",
+        "title": "M 改装二级警示",
+        "approved": true,
+        "body": "恢复供电前测量隔离回路电压"
+      }
+    },
+    "/library/equipment/relations/DM250": {
+      "body": {
+        "references": []
+      }
+    },
+    "/library/equipment/records/DM400": {
+      "body": {
+        "module": "DM400",
+        "issue": "1",
+        "equipment": "generic",
+        "title": "跨设备通用警示",
+        "approved": true,
+        "body": "所有设备共用：遵守静电防护与工位整洁要求"
+      }
+    },
+    "/library/equipment/relations/DM400": {
+      "body": {
+        "references": []
+      }
+    },
+    "/library/equipment/records/DM500": {
+      "body": {
+        "module": "DM500",
+        "issue": "2",
+        "equipment": "EQ-A",
+        "title": "N 未改装版检查（替代版）",
+        "approved": true,
+        "body": "按未改装 N 的原始回路完成检查"
+      }
+    },
+    "/library/equipment/relations/DM500": {
+      "body": {
+        "references": []
+      }
+    },
+    "/library/equipment/relations/DM600": {
+      "body": {
+        "references": []
+      }
+    },
+    "/library/equipment/state/unit-100": {
+      "body": {
+        "unit": "unit-100",
+        "equipment": "EQ-A",
+        "modifications": [
+          { "modification": "M", "status": "installed" }
+        ]
+      }
+    },
+    "/library/equipment/state/unit-200": {
+      "body": {
+        "unit": "unit-200",
+        "equipment": "EQ-A",
+        "modifications": [
+          { "modification": "M", "status": "absent" },
+          { "modification": "N", "status": "absent" }
         ]
       }
     }
